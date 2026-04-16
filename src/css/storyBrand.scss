@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 30;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  /* for iPhone */
+  -webkit-backdrop-filter: saturate(180%) blur(15px);
+  -moz-backdrop-filter: saturate(180%) blur(15px);
+  -o-backdrop-filter: saturate(180%) blur(15px);
+  backdrop-filter: saturate(180%) blur(15px);
+  border-bottom: 1px solid #ddd;
+
+  .headerBody {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin: 0 auto;
+    height: 52px;
+    max-width: 1000px;
+    @media screen and (min-width: 1024px) {
+      padding: 0;
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: bold;
+      a {
+        // color: rgb(29, 29, 31);
+        color: #fff;
+        mix-blend-mode: difference;
+      }
+    }
+    .globalNav {
+      ul {
+        display: flex;
+        gap: 1rem;
+        li {
+          a {
+            font-size: 1.4rem;
+            // color: rgb(29, 29, 31);
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+.container {
+  min-height: 100vh;
+  .brandHead {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    background: url("@images/template/waterstory.webp") no-repeat center / cover;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 10;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: rgba($color: #000000, $alpha: 0.4);
+    }
+    h2 {
+      font-size: 2rem;
+      color: #fff;
+      z-index: 11;
+      @media screen and (min-width: 1024px) {
+        font-size: 2vw;
+      }
+    }
+  }
+  .brandContent {
+    padding: 4rem 1rem 7rem 1rem;
+    margin: 0 auto;
+    max-width: 1000px;
+    @media screen and (min-width: 1024px) {
+      padding: 4rem 0 14rem 0;
+    }
+    dl {
+      margin-bottom: 4rem;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+      dt {
+        margin: 2rem 0;
+        font-size: 1.8rem;
+      }
+      dd {
+        font-size: 1.6rem;
+        line-height: 1.6;
+      }
+    }
+  }
+}
+.footer {
+  padding: 2.6rem 0;
+  background-color: rgb(18, 166, 224);
+  p {
+    font-size: 1.8rem;
+    text-align: center;
+    color: #fff;
+    @media screen and (max-width: 1024px) {
+      font-size: 1.6rem;
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 1.2rem;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // 최신 자바스크립트 문법 지원
+    "module": "ESNext", // 웹팩이 모듈을 처리하도록 ESNext 설정
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // 브라우저(Canvas, DOM 등) API 사용을 위해 필수!
+    "allowJs": true, // JS 파일도 TS에서 불러올 수 있게 허용
+    "checkJs": false, // JS 파일의 타입 체크는 꺼둠
+    "jsx": "react-jsx", // 리액트 사용 시 필요 (지금은 유지하셔도 됩니다)
+
+    "moduleResolution": "bundler", // 웹팩 같은 번들러를 쓸 때 권장되는 설정
+    "sourceMap": true, // 에러 발생 시 원래 TS 위치를 찾기 위해 필요 (개발용)
+    "rootDir": "./src", // 소스의 시작점을 src로 고정
+    "outDir": "./dist", // 출력 경로 (웹팩 사용시 무시되지만 명시)
+
+    "strict": true, // 엄격한 타입 체크 (더 안전한 코딩을 위해 추천)
+    "skipLibCheck": true, // 외부 라이브러리의 타입 체크는 건너뛰어 속도 향상
+    "esModuleInterop": true, // CommonJS와 ES 모듈 간의 호환성 확보
+    "isolatedModules": true, // 웹팩의 ts-loader가 파일을 개별적으로 변환할 때 필요
+    "paths": {
+      "@/*": ["./src/*"],
+      "@css/*": ["./src/css/*"],
+      "@ts/*": ["./src/ts/*"],
+      "@images/*": ["./src/images/*"]
+    },
+    "types": ["webpack-env"]
+  },
+  "include": ["src/**/*"], // src 내부만 본다
+  "exclude": [
+    // src 밖의 파일들은 철저히 무시한다
+    "node_modules",
+    "dist",
+    "webpack.config.js",
+    "package.json"
+  ]
+}

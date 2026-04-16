@@ -1,0 +1,15 @@
+html {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 10px;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  background: #fff;
+  color: rgb(29, 29, 31);
+}
+
+p {
+  line-height: 1.6;
+}

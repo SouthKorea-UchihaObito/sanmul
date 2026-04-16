@@ -1,0 +1,665 @@
+@charset "utf-8";
+
+body {
+  &.beforeLoad {
+    overflow: hidden;
+    .loading {
+      opacity: 1;
+    }
+    .container {
+      display: none;
+    }
+  }
+
+  .loading {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    opacity: 0;
+    transition: 0.5s;
+    p {
+      font-size: 1.6rem;
+      @media screen and (min-width: 1024px) {
+        font-size: 5vw;
+      }
+    }
+    @keyframes loadingSpin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .loadingCircle {
+      width: 54px;
+      height: 54px;
+      animation: loadingSpin 3s infinite;
+      @keyframes loadingCircleAni {
+        0% {
+          stroke-dashoffset: 157;
+        }
+        75% {
+          stroke-dashoffset: -147;
+        }
+        100% {
+          stroke-dashoffset: -157;
+        }
+      }
+      circle {
+        stroke: blue;
+        stroke-width: 4;
+        stroke-dasharray: 157;
+        stroke-dashoffset: -157;
+        fill: transparent;
+        animation: loadingCircleAni 1s infinite;
+      }
+    }
+  }
+}
+
+.container {
+  // overflow-x: hidden;
+  overflow-x: clip;
+  .header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 30;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    /* for iPhone */
+    -webkit-backdrop-filter: saturate(180%) blur(15px);
+    -moz-backdrop-filter: saturate(180%) blur(15px);
+    -o-backdrop-filter: saturate(180%) blur(15px);
+    backdrop-filter: saturate(180%) blur(15px);
+    border-bottom: 1px solid #ddd;
+
+    .headerBody {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      margin: 0 auto;
+      height: 52px;
+      max-width: 1000px;
+      @media screen and (min-width: 1024px) {
+        padding: 0;
+      }
+      h1 {
+        font-size: 2.2rem;
+        font-weight: bold;
+        a {
+          // color: rgb(29, 29, 31);
+          color: #555;
+          mix-blend-mode: difference;
+          &.active {
+            color: #fff;
+          }
+        }
+      }
+      .globalNav {
+        ul {
+          display: flex;
+          gap: 1rem;
+          li {
+            a {
+              font-size: 1.4rem;
+              // color: rgb(29, 29, 31);
+              color: #555;
+              &.active {
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  main {
+    .scrollSection {
+      position: relative;
+      padding-top: 40vh;
+
+      .mainMessage {
+        top: 40vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 2%;
+        margin: 20px 0;
+        height: 3em;
+        font-size: 2.8rem;
+        opacity: 0;
+        small {
+          display: block;
+          margin-bottom: 1rem;
+          font-size: 1.6rem;
+        }
+        @media screen and (min-width: 1024px) {
+          font-size: 6vw;
+          small {
+            font-size: 1.4vw;
+          }
+        }
+        p {
+          line-height: 1.2;
+          font-weight: bold;
+          text-align: center;
+        }
+      }
+      .stickyElem {
+        display: none;
+        position: fixed;
+        left: 0;
+        width: 100%;
+      }
+      .description {
+        font-size: 1.4rem;
+        color: #888;
+        @media screen and (min-width: 1024px) {
+          font-size: 2rem;
+        }
+      }
+      .descMessage {
+        width: 60%;
+        font-weight: bold;
+        opacity: 0;
+        @media screen and (min-width: 1024px) {
+          width: 20%;
+        }
+        dl {
+          dt {
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            font-weight: bold;
+          }
+          dd {
+            font-size: 1.6rem;
+            line-height: 1.4;
+            color: #333;
+          }
+        }
+        .pin {
+          margin-top: 4px;
+          width: 1px;
+          height: 100px;
+          background: rgb(29, 29, 31);
+        }
+      }
+    }
+    // 개별적인 section css 구간
+    #scrollSection0 {
+      color: #fff;
+      h2 {
+        position: relative;
+        top: 10vh;
+        z-index: 5;
+        font-size: 4rem;
+        text-align: center;
+        color: #fff;
+        @media screen and (min-width: 1024px) {
+          font-size: 9vw;
+        }
+      }
+      .senmulLogo {
+        left: 50%;
+        top: 50%;
+        width: 1000vw;
+        transform: translate(-10%, -50%);
+      }
+      .bluePath {
+        left: 50%;
+        top: 50%;
+        min-width: 850px;
+        height: 100vh;
+        transform: translate(-50%, -50%);
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+        .blueBoxPath {
+          fill: none;
+          stroke: blue;
+          stroke-width: 34;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-dasharray: 2008, 2008;
+          stroke-dashoffset: 2008;
+        }
+      }
+      .mainMessageA {
+        font-size: 3rem;
+        @media screen and (min-width: 1024px) {
+          font-size: 5vw;
+        }
+        @media screen and (max-width: 468px) {
+          font-size: 2.4rem;
+        }
+      }
+      .mainMessageB {
+        font-size: 4rem;
+        @media screen and (min-width: 1024px) {
+          font-size: 6vw;
+        }
+      }
+    }
+    #scrollSection1 {
+      position: relative;
+      display: block;
+      padding-top: 0;
+      width: 100%;
+
+      .stickyFrame {
+        position: sticky;
+        top: 0;
+        padding-top: 10vh;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        background: url("@images/stickyframe.webp") no-repeat center / cover;
+        .senmulContentWrapper {
+          display: flex;
+          height: 80%;
+          align-items: center;
+          width: max-content;
+          padding-left: 2vw;
+
+          div {
+            flex-shrink: 0;
+          }
+          .introBox {
+            flex-shrink: 0;
+            width: 500px;
+            padding: 0 1rem;
+            margin: 0 auto;
+            margin-right: 15vw;
+            p {
+              letter-spacing: 0.8px;
+              color: #fff;
+              &:first-of-type {
+                margin-bottom: 2rem;
+                text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3);
+              }
+              strong {
+                font-size: 3rem;
+                color: #fff;
+                @media screen and (min-width: 1024px) {
+                  font-size: 6rem;
+                }
+              }
+            }
+          }
+          .senmulContentBox {
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            width: 350px;
+            margin-right: 50px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow:
+              0 14px 28px rgba(0, 0, 0, 0.25),
+              0 10px 10px rgba(0, 0, 0, 0.22);
+
+            .contentBoxHead {
+              padding: 20px;
+              font-size: 2rem;
+              background: rgb(78, 165, 247);
+              border-radius: 5px 5px 0 0;
+
+              color: #fff;
+            }
+            .contentBoxMid {
+              padding: 20px;
+              min-height: 200px;
+              p {
+                font-size: 1.6rem;
+              }
+            }
+            .contentBoxBottom {
+              padding: 20px;
+              margin: 0 auto;
+            }
+          }
+          .lastBox {
+            flex-shrink: 0;
+            p {
+              font-size: 12vw;
+              text-shadow: 6px 12px 10px rgba(0, 0, 0, 0.7);
+              color: #fff;
+              @media screen and (min-width: 1024px) {
+                max-width: 1000px;
+                font-size: 12vw;
+              }
+              @media screen and (max-width: 768px) {
+                font-size: 12rem;
+              }
+              @media screen and (max-width: 468px) {
+                font-size: 10rem;
+              }
+            }
+          }
+        }
+      }
+    }
+    #scrollSection2 {
+      padding: 40vh 1rem 0 1rem;
+      margin: 0 auto;
+      @media screen and (min-width: 1024px) {
+        padding: 40vh 0 0 0;
+        max-width: 1000px;
+      }
+      .midMessage {
+        margin: 0 auto;
+        margin-top: 2rem;
+        max-width: 1000px;
+        font-size: 2rem;
+        color: #888;
+        @media screen and (min-width: 1024px) {
+          padding: 0;
+          width: 1000px;
+          font-size: 2.5vw;
+        }
+        strong {
+          display: block;
+          font-size: 2vw;
+          color: rgb(29, 29, 31);
+          @media screen and (min-width: 1024px) {
+            font-size: 1.5vw;
+          }
+          @media screen and (max-width: 768px) {
+            font-size: 1.8rem;
+          }
+        }
+      }
+      .contentWrap {
+        display: flex;
+        height: 400px;
+        gap: 1rem;
+        .leftContentWrap {
+          display: flex;
+          flex-direction: column;
+          width: 60%;
+          gap: 1rem;
+          div {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: flex-end;
+            gap: 0.6rem;
+            padding: 1rem;
+            height: 50%;
+            border-radius: 5px;
+            &:first-of-type {
+              background:
+                linear-gradient(rgb(220 234 255 / 30%), rgb(0 0 0 / 35%)),
+                url("@images/normalImage/waterstory.webp") no-repeat center /
+                  cover;
+              a {
+                display: inline-block;
+                padding: 1rem;
+                font-size: 1.4rem;
+                border: 1px solid #fff;
+                border-radius: 1rem;
+                color: #fff;
+              }
+            }
+            &:last-of-type {
+              background:
+                linear-gradient(rgb(220 234 255 / 30%), rgb(0 0 0 / 35%)),
+                url("@images/normalImage/waterdrink.webp") no-repeat center /
+                  cover;
+            }
+            p {
+              font-size: 1.6rem;
+              color: #fff;
+            }
+            button {
+              padding: 1rem;
+              font-size: 1.4rem;
+              border: 1px solid #fff;
+              border-radius: 1rem;
+              color: #fff;
+            }
+          }
+        }
+        .rightContentWrap {
+          // &::after {
+          //   content: "";
+          //   display: block;
+          //   position: absolute;
+          //   left: 0;
+          //   top: 0;
+          //   width: 100%;
+          //   height: 100%;
+          //   background: rgba(0, 0, 0, 0.3);
+          // }
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: flex-end;
+          gap: 0.6rem;
+          padding: 1rem;
+          width: 40%;
+          height: 100%;
+          background:
+            linear-gradient(rgb(220 234 255 / 30%), rgb(0 0 0 / 35%)),
+            url("@images/normalImage/waterpurchase.webp") no-repeat center /
+              cover;
+          border-radius: 5px;
+          p {
+            font-size: 1.6rem;
+            color: #fff;
+          }
+          button {
+            padding: 1rem;
+            font-size: 1.4rem;
+            border: 1px solid #fff;
+            border-radius: 1rem;
+            color: #fff;
+          }
+        }
+      }
+    }
+    #scrollSection3 {
+      .stickyElemCanvas {
+        top: 0;
+        height: 100%;
+        opacity: 0.8;
+        canvas {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+        }
+      }
+      .stickyElem {
+        color: #fff;
+        dt {
+          color: #fff;
+        }
+        dd {
+          color: #fff;
+        }
+        .pin {
+          background: #fff;
+        }
+      }
+      .descMessageB {
+        top: 20%;
+        left: 30%;
+      }
+      .descMessageC {
+        top: 20%;
+        left: 40%;
+      }
+      .descMessageD {
+        top: 20%;
+        left: 50%;
+      }
+      @media screen and (max-width: 1024px) {
+        .descMessageB {
+          left: 30%;
+        }
+        .descMessageC {
+          left: 30%;
+        }
+        .descMessageD {
+          left: 30%;
+        }
+      }
+    }
+    #scrollSection4 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .midMessage {
+        transform: translateY(10vh);
+        padding: 0 1rem;
+        margin: 0 auto;
+        max-width: 1000px;
+        font-size: 2rem;
+        color: #888;
+        @media screen and (min-width: 1024px) {
+          padding: 0;
+          width: 1000px;
+          font-size: 3.5vw;
+        }
+        strong {
+          display: block;
+          color: rgb(29, 29, 31);
+        }
+      }
+      .imageBlendCanvas {
+        &.sticky {
+          position: fixed;
+        }
+      }
+      .canvasCaption {
+        padding: 0 1rem;
+        margin: 0 auto;
+        max-width: 1000px;
+        font-size: 1.4rem;
+        color: #888;
+
+        @media screen and (min-width: 1024px) {
+          padding: 0;
+          margin-top: -24rem;
+          font-size: 2rem;
+        }
+        @media screen and (min-width: 1400px) {
+          padding: 0;
+          margin-top: -20rem;
+          font-size: 2.4rem;
+        }
+        @media screen and (min-width: 1700px) {
+          padding: 0;
+          margin-top: -12rem;
+          font-size: 2.4rem;
+        }
+        @media screen and (max-width: 1024px) {
+          margin-top: -32rem;
+        }
+        @media screen and (max-width: 968px) {
+          margin-top: -34rem;
+        }
+        @media screen and (max-width: 768px) {
+          margin-top: -36rem;
+        }
+        @media screen and (max-width: 678px) {
+          margin-top: -38rem;
+        }
+        @media screen and (max-width: 478px) {
+          margin-top: -44rem;
+        }
+      }
+    }
+  }
+
+  .footer {
+    padding: 2.6rem 0;
+    background-color: rgb(18, 166, 224);
+    p {
+      font-size: 1.8rem;
+      text-align: center;
+      color: #fff;
+      @media screen and (max-width: 1024px) {
+        font-size: 1.6rem;
+      }
+      @media screen and (max-width: 768px) {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+// body addClass
+#showScene0 #scrollSection0 .stickyElem,
+#showScene1 #scrollSection1 .stickyElem,
+#showScene2 #scrollSection2 .stickyElem,
+#showScene3 #scrollSection3 .stickyElem {
+  display: block;
+}
+
+body .scrollEffectEnd .stickyElem {
+  display: none !important;
+}
+
+// #showScene0 #scrollSection0,
+// #showScene1 #scrollSection1,
+// #showScene2 #scrollSection2,
+// #showScene3 #scrollSection3 {
+//   .stickyElem {
+//     display: block;
+//   }
+// }
+
+// @for $i from 0 through 3 {
+//   #showScene#{$i} #scrollSection#{$i} .stickyElem {
+//     display: block;
+//   }
+// }
+@for $i from 0 through 3 {
+  body#showScene#{$i} #scrollSection#{$i} .stickyElem {
+    display: block;
+  }
+}
+
+body#showScene1 .headerBody h1 a {
+  color: #fff;
+}
+body#showScene1 .headerBody .globalNav ul li a {
+  color: #fff;
+}
+
+body#showScene1 .headerBody h1 a.active {
+  color: #555;
+}
+body#showScene1 .headerBody .globalNav ul.active li a {
+  color: #555;
+}
+
+body#showScene3 .headerBody h1 a {
+  color: #fff;
+}
+body#showScene3 .headerBody .globalNav ul li a {
+  color: #fff;
+}
+
+body#showScene3 .headerBody h1 a.active {
+  color: #555;
+}
+body#showScene3 .headerBody .globalNav ul.active li a {
+  color: #555;
+}
